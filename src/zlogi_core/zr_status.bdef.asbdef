@@ -1,0 +1,42 @@
+managed implementation in class zbp_r_status unique;
+strict ( 2 );
+with draft;
+
+define behavior for zr_status alias Status
+persistent table zlogi_t_status
+draft table zlogi_t_status_d
+lock master
+total etag LastChangedAt
+
+authorization master ( global, instance )
+etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  field ( readonly:update ) ProcessCode, StatusCode;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedAt, LastChangedBy, LocalLastChangedAt, LocalLastChangedBy;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zlogi_t_status
+    {
+      ProcessCode        = process_code;
+      StatusCode         = status_code;
+      StatusDescription  = status_description;
+      IsInitial          = is_initial;
+      IsFinal            = is_final;
+      IsActive           = is_active;
+      CreatedBy          = created_by;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedBy = local_last_changed_by;
+      CreatedAt          = created_at;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

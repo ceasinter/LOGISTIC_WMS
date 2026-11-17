@@ -1,0 +1,66 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Estado',
+    typeNamePlural: 'Estados',
+    title: {
+        type: #STANDARD,
+        value: 'StatusCode'
+    },
+    description: {
+        value: 'StatusDescription'
+    }
+}
+annotate entity zc_status with
+{
+
+  //CREACIÓN DE PESTAÑAS PARA LA PANTALLA DE DETALLE
+  @UI.facet: [{
+      id: 'Estatus',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Estátus',
+      position: 10 }]
+
+  @UI.lineItem: [{ position: 20, label: 'Proceso' }]
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'Código Proceso'
+  @UI.identification: [{ position: 20 }]
+  ProcessCode;
+  
+  @UI.lineItem: [{ position: 30, label: 'Cód. Estátus' }]
+  @UI.selectionField: [{ position: 30 }]
+  @EndUserText.label: 'Código Status'
+  @UI.identification: [{ position: 30 }]
+  StatusCode;
+  @UI.lineItem: [{ position: 40, label: 'Descripción' }]
+  @UI.selectionField: [{ position: 40 }]
+  @EndUserText.label: 'Descripción'
+  @UI.identification: [{ position: 40 }]
+  StatusDescription;
+  @UI.lineItem: [{ position: 50, label: 'Estátus Inicial' }]
+  @UI.identification: [{ position: 50 }]
+  @EndUserText.label: 'Estátus Inicial'
+  IsInitial;
+  @UI.lineItem: [{ position: 60, label: 'Estátus Final' }]
+  @UI.identification: [{ position: 60 }]
+  @EndUserText.label: 'Estátus Final'
+  IsFinal;
+  @UI.lineItem: [{ position: 70, label: 'Activo' }]
+  @UI.identification: [{ position: 70 }]
+  @EndUserText.label: 'Activo'
+  IsActive;
+  @UI.hidden: true
+  CreatedBy;
+  @UI.hidden: true
+  LastChangedBy;
+  @UI.hidden: true
+  LocalLastChangedBy;
+  @UI.hidden: true
+  CreatedAt;
+  @UI.hidden: true
+  LastChangedAt;
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

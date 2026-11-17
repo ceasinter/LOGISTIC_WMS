@@ -1,0 +1,4 @@
+@EndUserText.label: 'LOGISTIQ - Status Service Definition'
+define service Zsd_status {
+  expose zc_status as Status;
+}
