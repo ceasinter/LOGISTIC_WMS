@@ -1,0 +1,4 @@
+@EndUserText.label: 'LOGISTIQ - SD - Status Transition'
+define service Zsd_status_transition {
+  expose zc_status_transition as StatusTransition;
+}

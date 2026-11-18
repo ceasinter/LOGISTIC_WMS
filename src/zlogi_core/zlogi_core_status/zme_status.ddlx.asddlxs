@@ -27,12 +27,13 @@ annotate entity zc_status with
   @EndUserText.label: 'Código Proceso'
   @UI.identification: [{ position: 20 }]
   ProcessCode;
-  
+
   @UI.lineItem: [{ position: 30, label: 'Cód. Estátus' }]
   @UI.selectionField: [{ position: 30 }]
   @EndUserText.label: 'Código Status'
   @UI.identification: [{ position: 30 }]
   StatusCode;
+  
   @UI.lineItem: [{ position: 40, label: 'Descripción' }]
   @UI.selectionField: [{ position: 40 }]
   @EndUserText.label: 'Descripción'
@@ -50,17 +51,17 @@ annotate entity zc_status with
   @UI.identification: [{ position: 70 }]
   @EndUserText.label: 'Activo'
   IsActive;
-  @UI.hidden: true
+  @UI.identification: [{ position: 80 }]
   CreatedBy;
-  @UI.hidden: true
+  @UI.identification: [{ position: 90 }]
   LastChangedBy;
-  @UI.hidden: true
+  @UI.identification: [{ position: 100 }]
   LocalLastChangedBy;
-  @UI.hidden: true
+  @UI.identification: [{ position: 110 }]
   CreatedAt;
-  @UI.hidden: true
+  @UI.identification: [{ position: 120 }]
   LastChangedAt;
-  @UI.hidden: true
+  @UI.identification: [{ position: 130 }]
   LocalLastChangedAt;
 
 }

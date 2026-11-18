@@ -1,0 +1,45 @@
+managed implementation in class zbp_r_status_transition unique;
+strict ( 2 );
+with draft;
+
+define behavior for zr_status_transition alias StatusTransition
+persistent table zlogi_t_sttrans
+draft table zlogi_t_sttran_d
+lock master
+total etag LastChangedAt
+
+authorization master ( global, instance )
+etag master LocalChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) ProcessCode, FromStatus, ToStatus;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalChangedBy, LocalChangedAt;
+
+  //VALIDACIONES, ACCIONES, DETERMINACIONES Y LÓGICA
+  validation ValidateTransition on save { create; update; }
+  validation ValidateStatusExistence on save { create; update; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare { validation ValidateTransition;
+                                   validation ValidateStatusExistence;
+                                 }
+
+  mapping for zlogi_t_sttrans
+    {
+      ProcessCode    = process_code;
+      FromStatus     = from_status;
+      ToStatus       = to_status;
+      IsActive       = is_active;
+      CreatedBy      = created_by;
+      LastChangedBy  = created_at;
+      LocalChangedBy = last_changed_by;
+      CreatedAt      = last_changed_at;
+      LastChangedAt  = local_changed_by;
+      LocalChangedAt = local_changed_at;
+    }
+}
