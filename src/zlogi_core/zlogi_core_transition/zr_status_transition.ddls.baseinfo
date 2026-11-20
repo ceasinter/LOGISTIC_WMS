@@ -6,7 +6,9 @@
 "ZLOGI_T_STTRANS"
 ],
 "ASSOCIATED":
-[],
+[
+"ZR_STATUS"
+],
 "BASE":
 [],
 "ANNO_REF":

@@ -1,0 +1,4 @@
+@EndUserText.label: 'LOGISTIQ - Warehouse - SD'
+define service Zsd_warehouse {
+  expose zc_warehouse as Warehouse;
+}

@@ -2,7 +2,7 @@
 
 @UI.headerInfo: {
     typeName: 'EstatusTransition',
-    typeNamePlural: 'StatusTransition',
+    typeNamePlural: 'StatusTransitions',
     title: {
         type: #STANDARD,
         value: 'ProcessCode'
@@ -30,35 +30,51 @@ annotate entity zc_status_transition with
   @UI.identification: [{ position: 20 }]
   ProcessCode;
 
-  @UI.lineItem: [{ position: 30, label: 'Estátus Desde' }]
+  @UI.lineItem: [{ position: 30, label: 'Código Estátus' }]
   @UI.selectionField: [{ position: 30 }]
-  @EndUserText.label: 'Estátus Desde'
+  @EndUserText.label: 'Código Estátus'
   @UI.identification: [{ position: 30 }]
+//  @UI.hidden: true
   FromStatus;
 
-  @UI.lineItem: [{ position: 40, label: 'Estátus Hasta' }]
-  @UI.selectionField: [{ position: 40 }]
-  @EndUserText.label: 'Estátus Hasta'
-  @UI.identification: [{ position: 40 }]
+  @UI.lineItem: [
+  { position: 40, label: 'Estátus origen' }
+  ]
+  @UI.selectionField: [{ position: 30 }]
+  @EndUserText.label: 'Estátus Origen'
+  FromStatusDescription;
+
+  @UI.lineItem: [{ position: 50, label: 'Código Estátus' }]
+  @UI.selectionField: [{ position: 50 }]
+  @EndUserText.label: 'Código Estátus'
+  @UI.identification: [{ position: 50 }]
+//  @UI.hidden: true
   ToStatus;
 
-  @UI.lineItem: [{ position: 50, label: 'Activo' }]
-  @UI.selectionField: [{ position: 50 }]
-  @EndUserText.label: 'Activo'
-  @UI.identification: [{ position: 50 }]
-  IsActive;
+  @UI.lineItem: [
+  { position: 60, label: 'Estátus Destino' }
+  ]
+  @UI.selectionField: [{ position: 40 }]
+  @EndUserText.label: 'Estátus Destino'
+  ToStatusDescription;
 
-  @UI.identification: [{ position: 60 }]
-  CreatedBy;
+  @UI.lineItem: [{ position: 70, label: 'Permitido' }]
+  @UI.selectionField: [{ position: 70 }]
+  @EndUserText.label: 'Permitido'
   @UI.identification: [{ position: 70 }]
-  LastChangedBy;
+  IsAllowed;
+
   @UI.identification: [{ position: 80 }]
-  LocalChangedBy;
+  CreatedBy;
   @UI.identification: [{ position: 90 }]
-  CreatedAt;
+  LastChangedBy;
   @UI.identification: [{ position: 100 }]
-  LastChangedAt;
+  LocalLastChangedBy;
   @UI.identification: [{ position: 110 }]
-  LocalChangedAt;
+  CreatedAt;
+  @UI.identification: [{ position: 120 }]
+  LastChangedAt;
+  @UI.identification: [{ position: 130 }]
+  LocalLastChangedAt;
 
 }

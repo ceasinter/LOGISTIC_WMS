@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZLOGI_MSG</ARBGB>
+    <MASTERLANG>S</MASTERLANG>
+    <STEXT>LOGISTIQ - Application Messages.</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>S</SPRSL>
+     <ARBGB>ZLOGI_MSG</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>El estátus de origen y destino no pueden ser iguales: &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>S</SPRSL>
+     <ARBGB>ZLOGI_MSG</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>El estátus de origen &amp;1 no existe o está inactivo para el proceso &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>S</SPRSL>
+     <ARBGB>ZLOGI_MSG</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>El estátus de destino &amp;1 no existe o está inactivo para el proceso &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>S</SPRSL>
+     <ARBGB>ZLOGI_MSG</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>El estátus de origen &amp;1 es final y no puede iniciar una transición.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>S</SPRSL>
+     <ARBGB>ZLOGI_MSG</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>El estátus de destino &amp;1 es inicial y no puede recibir una transición.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>S</SPRSL>
+     <ARBGB>ZLOGI_MSG</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>El código de almacén &amp;1 ya existe.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

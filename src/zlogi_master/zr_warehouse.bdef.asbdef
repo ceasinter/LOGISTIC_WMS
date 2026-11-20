@@ -1,0 +1,66 @@
+managed implementation in class zbp_r_warehouse unique;
+strict ( 2 );
+with draft;
+
+define behavior for zr_warehouse alias Warehouse
+persistent table zlogi_warehouse
+draft table zlogi_warehous_d
+lock master
+total etag LastChangedAt
+authorization master ( global, instance )
+etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly, numbering : managed ) WarehouseUUID;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+  field ( mandatory ) WarehouseCode;
+  field ( mandatory ) WarehouseName;
+
+  //  VALIDACIONES, DETERMINACIONES, ACCIONES
+//  Validar el código de almacén
+  validation ValidateWarehouseCode on save
+  {
+    create;
+    update;
+    field WarehouseCode;
+  }
+
+
+//  Establecer el código de Almacén a Mayúsculas
+  determination SetWarehouseCodeUppercase on modify {
+  create;
+  field WarehouseCode;
+}
+
+//Activar el Almacén automáticamente al crearse
+determination SetWarehouseActive on modify {
+  create;
+}
+
+  //ACCIONES DRAFT
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare { validation ValidateWarehouseCode; }
+
+
+  mapping for zlogi_warehouse
+    {
+      WarehouseUUID      = warehouse_uuid;
+      WarehouseCode      = warehouse_code;
+      WarehouseName      = warehouse_name;
+      Description        = description;
+      City               = city;
+      Country            = country;
+      IsActive           = is_active;
+      CreatedBy          = created_by;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedBy = local_last_changed_by;
+      CreatedAt          = created_at;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

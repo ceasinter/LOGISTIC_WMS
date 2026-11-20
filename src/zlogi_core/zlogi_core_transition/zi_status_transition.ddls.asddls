@@ -8,18 +8,21 @@ define root view entity zi_status_transition
   key ProcessCode,
   key FromStatus,
   key ToStatus,
-      IsActive,
-
+      IsAllowed,
       @Semantics.user.createdBy: true
       CreatedBy,
       @Semantics.user.lastChangedBy: true
       LastChangedBy,
       @Semantics.user.localInstanceLastChangedBy: true
-      LocalChangedBy,
+      LocalLastChangedBy,
       @Semantics.systemDateTime.createdAt: true
       CreatedAt,
       @Semantics.systemDateTime.lastChangedAt: true
       LastChangedAt,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      LocalChangedAt
+      LocalLastChangedAt,
+
+      //        ASOCIACIONES
+      _FromStatus : redirected to zi_status,
+      _ToStatus   : redirected to zi_status
 }

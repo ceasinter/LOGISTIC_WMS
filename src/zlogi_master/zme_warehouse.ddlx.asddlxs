@@ -1,0 +1,77 @@
+@Metadata.layer:#CORE
+
+@UI.headerInfo: {
+  typeName: 'Warehouse',
+  typeNamePlural: 'Warehouses',
+  title: {
+    type: #STANDARD,
+    value: 'WarehouseName'
+  },
+  description: {
+    value: 'WarehouseCode'
+  }
+}
+
+annotate entity zc_warehouse with
+{
+
+  @UI.facet: [
+      {
+        id: 'WarehouseGeneral',
+        purpose: #STANDARD,
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'Información General',
+        position: 10
+      }
+    ]
+
+  @UI.hidden: true
+  WarehouseUUID;
+
+  @UI.lineItem: [{ position: 10, label: 'Código Almacén' }]
+  @UI.identification: [{ position: 10, label: 'Código Almacén' }]
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Código Almacén'
+  WarehouseCode;
+
+  @UI.lineItem: [{ position: 20, label: 'Nombre Almacén' }]
+  @UI.identification: [{ position: 20, label: 'Nombre Almacén' }]
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'Nombre Almacén'
+  WarehouseName;
+
+  @UI.lineItem: [{ position: 30, label: 'Descripción' }]
+  @UI.identification: [{ position: 30, label: 'Descripción' }]
+  Description;
+
+  @UI.lineItem: [{ position: 40, label: 'Ciudad' }]
+  @UI.identification: [{ position: 40, label: 'Ciudad' }]
+  City;
+
+  @UI.lineItem: [{ position: 50, label: 'País' }]
+  @UI.identification: [{ position: 50, label: 'País' }]
+  Country;
+
+  @UI.lineItem: [{ position: 60, label: 'Activo' }]
+  @UI.identification: [{ position: 60, label: 'Activo' }]
+  IsActive;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

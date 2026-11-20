@@ -9,13 +9,13 @@ lock master
 total etag LastChangedAt
 
 authorization master ( global, instance )
-etag master LocalChangedAt
+etag master LocalLastChangedAt
 {
   create ( authorization : global );
   update;
   delete;
-  field ( readonly ) ProcessCode, FromStatus, ToStatus;
-  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalChangedBy, LocalChangedAt;
+  field ( readonly : update ) ProcessCode, FromStatus, ToStatus;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
 
   //VALIDACIONES, ACCIONES, DETERMINACIONES Y LÓGICA
   validation ValidateTransition on save { create; update; }
@@ -25,21 +25,21 @@ etag master LocalChangedAt
   draft action Activate optimized;
   draft action Discard;
   draft action Resume;
-  draft determine action Prepare { validation ValidateTransition;
-                                   validation ValidateStatusExistence;
-                                 }
+  draft determine action Prepare
+  { validation ValidateTransition;
+    validation ValidateStatusExistence; }
 
   mapping for zlogi_t_sttrans
     {
-      ProcessCode    = process_code;
-      FromStatus     = from_status;
-      ToStatus       = to_status;
-      IsActive       = is_active;
-      CreatedBy      = created_by;
-      LastChangedBy  = created_at;
-      LocalChangedBy = last_changed_by;
-      CreatedAt      = last_changed_at;
-      LastChangedAt  = local_changed_by;
-      LocalChangedAt = local_changed_at;
+      ProcessCode        = process_code;
+      FromStatus         = from_status;
+      ToStatus           = to_status;
+      IsAllowed          = is_allowed;
+      CreatedBy          = created_by;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedBy = local_last_changed_by;
+      CreatedAt          = created_at;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
     }
 }
