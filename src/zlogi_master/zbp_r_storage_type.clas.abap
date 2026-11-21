@@ -1,0 +1,5 @@
+CLASS zbp_r_storage_type DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zr_storage_type.
+ENDCLASS.
+
+CLASS zbp_r_storage_type IMPLEMENTATION.
+ENDCLASS.

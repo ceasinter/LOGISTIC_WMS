@@ -1,0 +1,48 @@
+managed implementation in class zbp_r_storage_type unique;
+strict ( 2 );
+with draft;
+
+define behavior for zr_storage_type alias StoreType
+persistent table zlogi_stor_type
+draft table zlogi_str_type_d
+lock master
+total etag LastChangedAt
+authorization master ( global, instance )
+etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly, numbering : managed ) StorageTypeUUID;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+  field ( mandatory ) StorageTypeCode;
+  field ( mandatory ) StorageTypeName;
+
+//VALIDACIONES, DETERMINACIONES, ACCIONES
+ validation ValidateStorageTypeCode on save { create; update; field StorageTypeCode; }
+
+  determination SetStorageTypeCodeUppercase on modify { create; field StorageTypeCode; }
+
+  determination SetStorageTypeActive on modify { create; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare { validation ValidateStorageTypeCode; }
+
+  mapping for zlogi_stor_type
+    {
+      StorageTypeUUID    = storage_type_uuid;
+      StorageTypeCode    = storage_type_code;
+      StorageTypeName    = storage_type_name;
+      Description        = description;
+      IsActive           = is_active;
+      CreatedBy          = created_by;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedBy = local_last_changed_by;
+      CreatedAt          = created_at;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

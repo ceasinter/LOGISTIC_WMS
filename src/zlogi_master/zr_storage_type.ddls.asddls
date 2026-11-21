@@ -5,7 +5,7 @@
 define root view entity zr_storage_type
   as select from zlogi_stor_type
 {
-  key storage_type_uuid     as StorageTypeUuid,
+  key storage_type_uuid     as StorageTypeUUID,
       storage_type_code     as StorageTypeCode,
       storage_type_name     as StorageTypeName,
       description           as Description,

@@ -5,7 +5,7 @@ define root view entity zi_storage_type
   provider contract transactional_interface
   as projection on zr_storage_type
 {
-  key StorageTypeUuid,
+  key StorageTypeUUID,
       StorageTypeCode,
       StorageTypeName,
       Description,
