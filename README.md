@@ -129,43 +129,6 @@ La arquitectura contempla futuras integraciones con SAP y otros sistemas ERP med
 
 ---
 
-## Hoja de ruta de desarrollo
-
-El proyecto se desarrollará de forma incremental.
-
-| Fase | Módulo | Estado |
-|---|---|---|
-| 1 | Core y gestión de estados | En desarrollo |
-| 2 | Datos maestros de almacenes | Planificado |
-| 3 | Datos maestros de productos | Planificado |
-| 4 | Recepción de mercancías | Planificado |
-| 5 | Almacenamiento (Putaway) | Planificado |
-| 6 | Gestión de inventarios | Planificado |
-| 7 | Transferencias de existencias | Planificado |
-| 8 | Conteos cíclicos | Planificado |
-| 9 | Picking y reposición | Planificado |
-| 10 | Embalaje y despacho | Planificado |
-| 11 | Seguimiento de entregas | Planificado |
-| 12 | Analítica y paneles de control | Planificado |
-
-## Estado actual del desarrollo
-
-Se ha configurado el entorno inicial de desarrollo.
-
-**Completado:**
-
-- Cuenta de SAP BTP ABAP Environment.
-- Instalación de Eclipse.
-- Instalación de ABAP Development Tools (ADT).
-- Conexión de Eclipse con el entorno ABAP.
-- Creación de la primera tabla de base de datos para el catálogo de estados: `ZLOGI_T_STATUS`.
-
-**En desarrollo:**
-
-- CDS Interface View: `ZI_STATUS`.
-- Objeto de negocio RAP para gestión de estados.
-- Servicios transaccionales RAP.
-
 ## Objetivos del proyecto
 
 LOGISTIQ tiene tres objetivos principales:
