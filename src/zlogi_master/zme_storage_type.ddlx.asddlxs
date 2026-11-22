@@ -1,0 +1,84 @@
+@Metadata.layer:#CORE
+
+@UI.headerInfo: {
+  typeName: 'Tipo de almacenamiento',
+  typeNamePlural: 'Tipos de almacenamiento',
+  title: {
+    type: #STANDARD,
+    value: 'StorageTypeCode'
+  },
+  description: {
+    value: 'StorageTypeName'
+  }
+}
+annotate entity zc_storage_type
+    with 
+{
+
+ @UI.facet: [
+    {
+      id: 'GeneralInformation',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Información general',
+      position: 10  
+    }
+  ]
+   
+    @UI.lineItem: [
+    { position: 10, label: 'Código' }
+  ]
+  @UI.identification: [
+    { position: 10, label: 'Código' }
+  ]
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Código'
+  StorageTypeCode;
+
+  @UI.lineItem: [
+    { position: 20, label: 'Nombre' }
+  ]
+  @UI.identification: [
+    { position: 20, label: 'Nombre' }
+  ]
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'Nombre'
+  StorageTypeName;
+
+  @UI.lineItem: [
+    { position: 30, label: 'Descripción' }
+  ]
+  @UI.identification: [
+    { position: 30, label: 'Descripción' }
+  ]
+  Description;
+
+  @UI.lineItem: [
+    { position: 40, label: 'Activo' }
+  ]
+  @UI.identification: [
+    { position: 40, label: 'Activo' }
+  ]
+  IsActive;
+
+  @UI.hidden: true
+  StorageTypeUUID;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

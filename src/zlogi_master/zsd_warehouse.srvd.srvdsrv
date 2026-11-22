@@ -1,4 +1,6 @@
 @EndUserText.label: 'LOGISTIQ - Warehouse - SD'
 define service Zsd_warehouse {
-  expose zc_warehouse as Warehouse;
+  expose zc_warehouse    as Warehouse;
+  expose zc_storage_type as StorageType;
+  expose zc_storage_bin  as StorageBin;
 }

@@ -1,0 +1,101 @@
+@Metadata.layer:#CORE
+
+@UI.headerInfo: {
+typeName: 'Ubicación de Almacenamiento',
+typeNamePlural: 'Ubicaciones de Almacenamiento',
+title: {
+    type: #STANDARD,
+    value: 'StorageBinCode'
+    },
+    description: {
+    value: 'StorageBinName'
+    }
+}
+
+annotate entity zc_storage_bin with
+{
+
+  @UI.facet: [
+    {
+      id: 'GeneralInformation',
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Información General',
+      position: 10
+    }
+  ]
+
+  @UI.hidden: true
+  StorageBinUUID;
+  @UI.lineItem: [{ position: 10, label: 'Código Ubicación' }]
+  @UI.identification: [{ position: 10, label: 'Código Ubicación' }]
+  StorageBinCode;
+
+  @UI.lineItem: [{ position: 20, label: 'Nombre Ubicación' }]
+  @UI.identification: [{ position: 20, label: 'Nombre Ubicación' }]
+  StorageBinName;
+
+  @UI.lineItem: [{ position: 30, label: 'Pasillo' }]
+  @UI.identification: [{ position: 40, label: 'Pasillo' }]
+  AisleCode;
+
+  @UI.lineItem: [{ position: 40, label: 'Rack' }]
+  @UI.identification: [{ position: 50, label: 'Rack' }]
+  RackCode;
+
+  @UI.lineItem: [{ position: 50, label: 'Nivel' }]
+  @UI.identification: [{ position: 60, label: 'Nivel' }]
+  LevelCode;
+
+  @UI.lineItem: [{ position: 60, label: 'Posición' }]
+  @UI.identification: [{ position: 70, label: 'Posición' }]
+  PositionCode;
+
+  @UI.lineItem: [{ position: 70, label: 'Activo' }]
+  @UI.identification: [{ position: 80, label: 'Activo' }]
+  IsActive;
+
+  @UI.hidden: true
+  WarehouseUUID;
+
+  @Consumption.valueHelpDefinition: [
+  {
+    entity: {
+      name: 'zc_storage_type',
+      element: 'StorageTypeUUID'
+    }
+  } ]
+
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.identification: [{ position: 30, label: 'Tipo de almacenamiento' }]
+  @EndUserText.label: 'Tipo de almacenamiento'
+  StorageTypeUUID;
+  
+  @UI.hidden: true
+  StorageTypeName;
+
+  @UI.lineItem: [{ position: 80, label: 'Descripción' }]
+  @UI.identification: [
+    { position: 80, label: 'Descripción' }
+  ]
+  @EndUserText.label: 'Descripción'
+  Description;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

@@ -8,6 +8,7 @@ define root view entity zc_storage_type
 {
   key StorageTypeUUID,
       StorageTypeCode,
+      @Semantics.text: true
       StorageTypeName,
       Description,
       IsActive,
@@ -23,4 +24,5 @@ define root view entity zc_storage_type
       LastChangedAt,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       LocalLastChangedAt
+      
 }

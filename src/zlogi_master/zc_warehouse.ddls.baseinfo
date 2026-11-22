@@ -6,9 +6,14 @@
 "ZR_WAREHOUSE"
 ],
 "ASSOCIATED":
-[],
+[
+"ZC_STORAGE_BIN",
+"ZR_STORAGE_BIN"
+],
 "BASE":
-[],
+[
+"ZR_WAREHOUSE"
+],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":

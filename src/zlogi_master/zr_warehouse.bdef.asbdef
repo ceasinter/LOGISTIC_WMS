@@ -1,6 +1,7 @@
 managed implementation in class zbp_r_warehouse unique;
 strict ( 2 );
 with draft;
+with cross associations;
 
 define behavior for zr_warehouse alias Warehouse
 persistent table zlogi_warehouse
@@ -13,31 +14,37 @@ etag master LocalLastChangedAt
   create ( authorization : global );
   update;
   delete;
-  field ( readonly, numbering : managed ) WarehouseUUID;
+
+  //  ASOCIACIOINES
+  association _StorageBin
+  {
+    create ( authorization : global );
+    with draft;
+  }
+
+
   field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+  field ( readonly, numbering : managed ) WarehouseUUID;
   field ( mandatory ) WarehouseCode;
   field ( mandatory ) WarehouseName;
 
   //  VALIDACIONES, DETERMINACIONES, ACCIONES
-//  Validar el código de almacén
-  validation ValidateWarehouseCode on save
+  //  Validar el código de almacén
+  validation ValidateWarehouseCode on save { create; update; field WarehouseCode; }
+
+
+  //  Establecer el código de Almacén a Mayúsculas
+  determination SetWarehouseCodeUppercase on modify
   {
     create;
-    update;
     field WarehouseCode;
   }
 
-
-//  Establecer el código de Almacén a Mayúsculas
-  determination SetWarehouseCodeUppercase on modify {
-  create;
-  field WarehouseCode;
-}
-
-//Activar el Almacén automáticamente al crearse
-determination SetWarehouseActive on modify {
-  create;
-}
+  //Activar el Almacén automáticamente al crearse
+  determination SetWarehouseActive on modify
+  {
+    create;
+  }
 
   //ACCIONES DRAFT
   draft action Edit;
@@ -61,6 +68,58 @@ determination SetWarehouseActive on modify {
       LocalLastChangedBy = local_last_changed_by;
       CreatedAt          = created_at;
       LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}
+
+define behavior for zr_storage_bin alias StorageBin
+persistent table zlogi_stor_bin
+draft table zlogi_stor_bin_d
+lock dependent by _Warehouse
+authorization dependent by _Warehouse
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  determination SetStorageBinActive on modify { create; }
+
+  field ( readonly, numbering : managed ) StorageBinUUID;
+
+  field ( readonly )
+  WarehouseUUID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt;
+
+  field ( mandatory ) StorageBinCode;
+  field ( mandatory ) StorageBinName;
+  field ( mandatory ) StorageTypeUUID;
+
+  association _Warehouse { with draft; }
+  association _StorageType;
+
+  mapping for zlogi_stor_bin
+    {
+      StorageBinUUID     = storage_bin_uuid;
+      WarehouseUUID      = warehouse_uuid;
+      StorageTypeUUID    = storage_type_uuid;
+      StorageBinCode     = storage_bin_code;
+      StorageBinName     = storage_bin_name;
+      AisleCode          = aisle_code;
+      RackCode           = rack_code;
+      LevelCode          = level_code;
+      PositionCode       = position_code;
+      Description        = description;
+      IsActive           = is_active;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedBy = local_last_changed_by;
       LocalLastChangedAt = local_last_changed_at;
     }
 }

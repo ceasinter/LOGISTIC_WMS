@@ -16,14 +16,22 @@ annotate entity zc_warehouse with
 {
 
   @UI.facet: [
-      {
-        id: 'WarehouseGeneral',
-        purpose: #STANDARD,
-        type: #IDENTIFICATION_REFERENCE,
-        label: 'Información General',
-        position: 10
-      }
-    ]
+   {
+     id: 'WarehouseGeneral',
+     purpose: #STANDARD,
+     type: #IDENTIFICATION_REFERENCE,
+     label: 'Información General',
+     position: 10
+   },
+   {
+     id: 'StorageBins',
+     purpose: #STANDARD,
+     type: #LINEITEM_REFERENCE,
+     label: 'Ubicaciones de Almacenamiento',
+     position: 20,
+     targetElement: '_StorageBin'
+   }
+  ]
 
   @UI.hidden: true
   WarehouseUUID;
@@ -32,6 +40,14 @@ annotate entity zc_warehouse with
   @UI.identification: [{ position: 10, label: 'Código Almacén' }]
   @UI.selectionField: [{ position: 10 }]
   @EndUserText.label: 'Código Almacén'
+  @Consumption.valueHelpDefinition: [
+  {
+    entity: {
+      name: 'zc_warehouse',
+      element: 'WarehouseCode'
+    }
+  }
+  ]
   WarehouseCode;
 
   @UI.lineItem: [{ position: 20, label: 'Nombre Almacén' }]
@@ -54,6 +70,8 @@ annotate entity zc_warehouse with
 
   @UI.lineItem: [{ position: 60, label: 'Activo' }]
   @UI.identification: [{ position: 60, label: 'Activo' }]
+  @UI.selectionField: [{ position: 60 }]
+  @EndUserText.label: 'Activo'
   IsActive;
 
   @UI.hidden: true

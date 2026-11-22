@@ -1,0 +1,4 @@
+@EndUserText.label: 'LOGISTIQ - SD - Storage Type'
+define service Zsd_storage_type {
+  expose zc_storage_type as Storetype;
+}

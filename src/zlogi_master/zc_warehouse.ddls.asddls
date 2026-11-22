@@ -24,5 +24,8 @@ define root view entity zc_warehouse
       @Semantics.systemDateTime.lastChangedAt: true
       LastChangedAt,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      LocalLastChangedAt
+      LocalLastChangedAt,
+
+      //      ASOCIACIONES
+      _StorageBin : redirected to composition child zc_storage_bin
 }

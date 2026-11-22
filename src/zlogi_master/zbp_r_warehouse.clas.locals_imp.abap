@@ -1,3 +1,59 @@
+CLASS lhc_storagebin DEFINITION INHERITING FROM cl_abap_behavior_handler.
+
+  PRIVATE SECTION.
+
+    METHODS SetStorageBinActive FOR DETERMINE ON MODIFY
+      keys FOR StorageBin~SetStorageBinActive.
+
+ENDCLASS.
+
+CLASS lhc_storagebin IMPLEMENTATION.
+
+  METHOD SetStorageBinActive.
+  READ ENTITIES OF zr_warehouse IN LOCAL MODE
+
+    ENTITY StorageBin
+
+    FIELDS ( IsActive )
+
+    WITH CORRESPONDING #( keys )
+
+    RESULT DATA(lt_storagebins).
+
+  DATA lt_update TYPE TABLE FOR UPDATE zr_storage_bin.
+
+  LOOP AT lt_storagebins INTO DATA(ls_storagebin).
+
+    IF ls_storagebin-IsActive IS INITIAL.
+
+      APPEND VALUE #(
+
+        %tky     = ls_storagebin-%tky
+
+        IsActive = abap_true
+
+      ) TO lt_update.
+
+    ENDIF.
+
+  ENDLOOP.
+
+  IF lt_update IS NOT INITIAL.
+
+    MODIFY ENTITIES OF zr_warehouse IN LOCAL MODE
+
+      ENTITY StorageBin
+
+      UPDATE FIELDS ( IsActive )
+
+      WITH lt_update.
+
+  ENDIF.
+
+  ENDMETHOD.
+
+ENDCLASS.
+
 CLASS lhc_Warehouse DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
 

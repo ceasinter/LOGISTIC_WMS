@@ -4,6 +4,7 @@
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity zr_warehouse
   as select from zlogi_warehouse
+  composition [0..*] of zr_storage_bin as _StorageBin
 {
   key warehouse_uuid        as WarehouseUUID,
       warehouse_code        as WarehouseCode,
@@ -23,5 +24,8 @@ define root view entity zr_warehouse
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at       as LastChangedAt,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      local_last_changed_at as LocalLastChangedAt
+      local_last_changed_at as LocalLastChangedAt,
+
+      //      ASOCIACIONES
+      _StorageBin
 }

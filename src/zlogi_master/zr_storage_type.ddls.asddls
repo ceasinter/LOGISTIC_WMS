@@ -7,6 +7,7 @@ define root view entity zr_storage_type
 {
   key storage_type_uuid     as StorageTypeUUID,
       storage_type_code     as StorageTypeCode,
+      @Semantics.text: true
       storage_type_name     as StorageTypeName,
       description           as Description,
       is_active             as IsActive,

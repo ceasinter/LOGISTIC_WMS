@@ -6,7 +6,9 @@
 "ZLOGI_WAREHOUSE"
 ],
 "ASSOCIATED":
-[],
+[
+"ZR_STORAGE_BIN"
+],
 "BASE":
 [],
 "ANNO_REF":
