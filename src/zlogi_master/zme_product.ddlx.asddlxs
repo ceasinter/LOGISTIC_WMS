@@ -1,0 +1,113 @@
+@Metadata.layer:#CORE
+
+@UI.headerInfo: {
+  typeName: 'Producto',
+  typeNamePlural: 'Productos',
+  title: {
+    type: #STANDARD,
+    value: 'ProductCode'
+  },
+  description: {
+    value: 'ProductName'
+  }
+}
+
+annotate entity zc_producto_lw with
+{
+
+  @UI.facet: [
+      {
+        id: 'GeneralInformation',
+        purpose: #STANDARD,
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'Información general',
+        position: 10
+      }
+    ]
+
+  @UI.lineItem: [
+     { position: 10, label: 'Código' }
+   ]
+  @UI.identification: [
+    { position: 10, label: 'Código' }
+  ]
+  @EndUserText.label: 'Código de producto'
+  ProductCode;
+
+  @UI.lineItem: [
+    { position: 20, label: 'Nombre' }
+  ]
+  @UI.identification: [
+    { position: 20, label: 'Nombre' }
+  ]
+  @EndUserText.label: 'Nombre del producto'
+  ProductName;
+
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.lineItem: [
+    { position: 30, label: 'Unidad base' }
+  ]
+  @UI.identification: [
+    { position: 30, label: 'Unidad base' }
+  ]
+  @EndUserText.label: 'Unidad de medida'
+
+  @Consumption.valueHelpDefinition: [
+  {
+    entity: {
+      name: 'zc_units_meas',
+      element: 'UnitCode'
+    }
+  }
+  ]
+  BaseUnit;
+
+  @UI.hidden: true
+  BaseUnitName;
+
+  @UI.lineItem: [
+    { position: 40, label: 'Código de barras' }
+  ]
+  @UI.identification: [
+    { position: 40, label: 'Código de barras' }
+  ]
+  @EndUserText.label: 'Código de barras'
+  Barcode;
+
+  @UI.lineItem: [
+    { position: 50, label: 'Activo' }
+  ]
+  @UI.identification: [
+    { position: 50, label: 'Activo' }
+  ]
+  @EndUserText.label: 'Activo'
+  IsActive;
+
+  @UI.identification: [
+    { position: 60, label: 'Descripción' }
+  ]
+  @EndUserText.label: 'Descripción'
+  Description;
+
+  @UI.hidden: true
+  ProductUUID;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

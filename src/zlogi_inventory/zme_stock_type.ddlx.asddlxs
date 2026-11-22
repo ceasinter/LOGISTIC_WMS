@@ -1,0 +1,75 @@
+@Metadata.layer:#CORE
+
+@UI.headerInfo: {
+  typeName: 'Tipo de stock',
+  typeNamePlural: 'Tipos de stock',
+  title: {
+    type: #STANDARD,
+    value: 'StockTypeCode'
+  },
+  description: {
+    value: 'StockTypeName'
+  }
+}
+
+annotate entity zc_stock_type with
+{
+  @UI.facet: [
+      {
+        id: 'GeneralInformation',
+        purpose: #STANDARD,
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'Información general',
+        position: 10
+      }
+    ]
+
+  @UI.lineItem: [{ position: 10, label: 'Código' }]
+  @UI.identification: [{ position: 10, label: 'Código' }]
+  StockTypeCode;
+
+  @UI.lineItem: [{ position: 20, label: 'Nombre' }]
+  @UI.identification: [{ position: 20, label: 'Nombre' }]
+  StockTypeName;
+
+  @UI.lineItem: [{ position: 30, label: 'Disponible para picking' }]
+  @UI.identification: [{ position: 30, label: 'Disponible para picking' }]
+  IsPickable;
+
+  @UI.lineItem: [{ position: 40, label: 'Requiere calidad' }]
+  @UI.identification: [{ position: 40, label: 'Requiere calidad' }]
+  RequiresQuality;
+
+  @UI.lineItem: [{ position: 50, label: 'Bloqueado' }]
+  @UI.identification: [{ position: 50, label: 'Bloqueado' }]
+  IsBlocked;
+
+  @UI.lineItem: [{ position: 60, label: 'Activo' }]
+  @UI.identification: [{ position: 60, label: 'Activo' }]
+  IsActive;
+
+  @UI.identification: [{ position: 70, label: 'Descripción' }]
+  Description;
+
+  @UI.hidden: true
+  StockTypeUUID;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

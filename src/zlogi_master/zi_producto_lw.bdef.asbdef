@@ -1,0 +1,15 @@
+interface;
+use draft;
+
+define behavior for zi_producto_lw alias Product
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+}

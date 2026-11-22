@@ -1,0 +1,4 @@
+@EndUserText.label: 'LOGISTIQ - Stock Type - SD'
+define service Zsd_stock_type {
+  expose zc_stock_type as StockType;
+}

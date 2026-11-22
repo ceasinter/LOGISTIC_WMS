@@ -1,0 +1,4 @@
+@EndUserText.label: 'LOGISTIQ - Units Measure - SD'
+define service Zsd_units_meas {
+  expose zc_units_meas as UnitMeasure;
+}

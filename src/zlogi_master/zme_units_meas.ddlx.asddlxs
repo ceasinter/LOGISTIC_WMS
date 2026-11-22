@@ -1,0 +1,65 @@
+@Metadata.layer:#CORE
+
+@UI.headerInfo: {
+  typeName: 'Unidad de medida',
+  typeNamePlural: 'Unidades de medida',
+  title: {
+    type: #STANDARD,
+    value: 'UnitCode'
+  },
+  description: {
+    type: #STANDARD,
+    value: 'UnitName'
+  }
+}
+
+annotate entity zc_units_meas with
+{
+  @UI.facet: [
+     {
+       id: 'GeneralInformation',
+       purpose: #STANDARD,
+       type: #IDENTIFICATION_REFERENCE,
+       label: 'Información general',
+       position: 10
+     }
+   ]
+
+  @UI.lineItem: [{ position: 10, label: 'Código' }]
+  @UI.identification: [{ position: 10, label: 'Código' }]
+  UnitCode;
+
+  @UI.lineItem: [{ position: 20, label: 'Nombre' }]
+  @UI.identification: [{ position: 20, label: 'Nombre' }]
+  UnitName;
+
+  @UI.lineItem: [{ position: 30, label: 'Símbolo' }]
+  @UI.identification: [{ position: 30, label: 'Símbolo' }]
+  UnitSymbol;
+
+  @UI.lineItem: [{ position: 40, label: 'Activo' }]
+  @UI.identification: [{ position: 40, label: 'Activo' }]
+  IsActive;
+
+  @UI.identification: [{ position: 50, label: 'Descripción' }]
+  Description;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

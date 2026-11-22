@@ -50,6 +50,12 @@
      <MSGNR>007</MSGNR>
      <TEXT>El código de tipo de almacenamiento &amp;1 ya existe.</TEXT>
     </T100>
+    <T100>
+     <SPRSL>S</SPRSL>
+     <ARBGB>ZLOGI_MSG</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>El código de producto &amp;1 ya existe.</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>
