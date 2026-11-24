@@ -1,0 +1,10 @@
+@EndUserText.label: 'LOGISTIQ - Receiving - SD'
+define service zsd_receipt_lw {
+  expose zc_receipt_lw    as Receipts;
+  expose zc_receipt_items as ReceiptItems;
+  expose zc_warehouse     as Warehouses;
+  expose ZC_Product       as Products;
+  expose zc_storage_bin   as StorageBins;
+  expose zc_stock_type    as StockTypes;
+  expose zc_units_meas    as Units;
+}

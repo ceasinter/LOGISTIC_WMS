@@ -1,0 +1,6 @@
+interface;
+
+define behavior for zi_stock_movement alias StockMovement
+{
+
+}

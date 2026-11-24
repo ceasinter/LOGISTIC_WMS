@@ -1,0 +1,16 @@
+interface;
+use draft;
+
+define behavior for zi_receipt_lw alias Receipt
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+}

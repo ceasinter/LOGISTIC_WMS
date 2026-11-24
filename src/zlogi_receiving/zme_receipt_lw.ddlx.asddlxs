@@ -1,0 +1,104 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: {
+    typeName: 'Recepción',
+    typeNamePlural: 'Recepciones',
+    title: {
+        type: #STANDARD,
+        value: 'ReceiptNumber'
+    },
+    description: {
+        type: #STANDARD,
+        value: 'SupplierName'
+    }
+}
+
+annotate entity zc_receipt_lw with
+{
+
+  @UI.facet: [
+      {
+          id: 'GeneralInformation',
+          purpose: #STANDARD,
+          type: #IDENTIFICATION_REFERENCE,
+          label: 'Información General',
+          position: 10
+      },
+      {
+          id: 'ReceiptItems',
+          purpose: #STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Posiciones de recepción',
+          position: 20,
+          targetElement: '_Items'
+      }
+  ]
+
+  @UI.lineItem: [{ position: 10, label: 'N.º recepción' }]
+  @UI.identification: [{ position: 10 }]
+  ReceiptNumber;
+
+  @Consumption.valueHelpDefinition: [
+    {
+      entity: {
+        name: 'zc_warehouse',
+        element: 'WarehouseUUID'
+      }
+    }
+  ]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.lineItem: [{ position: 20, label: 'Almacén' }]
+  @UI.identification: [{ position: 20, label: 'Almacén' }]
+  WarehouseUUID;
+
+  @UI.lineItem: [{ position: 30, label: 'Nombre Proveedor' }]
+  @UI.identification: [{ position: 30 }]
+  @EndUserText.label: 'Proveedor'
+  SupplierName;
+
+  @UI.identification: [{ position: 40 }]
+  @EndUserText.label: 'Código Proveedor'
+  SupplierCode;
+
+  @UI.identification: [{ position: 50 }]
+  @EndUserText.label: 'Referencia'
+  ReferenceNumber;
+
+  @UI.lineItem: [{ position: 40, label: 'Fecha de recepción' }]
+  @UI.identification: [{ position: 60 }]
+  @EndUserText.label: 'Fecha Recibo'
+  ReceiptDate;
+
+  @UI.lineItem: [{ position: 50, label: 'Estado' }]
+  @UI.identification: [{ position: 70 }]
+  @EndUserText.label: 'Estátus'
+  StatusCode;
+
+  @UI.identification: [{ position: 80 }]
+  @EndUserText.label: 'Descripción'
+  Description;
+
+  @UI.hidden: true
+  ReceiptUUID;
+
+  @UI.hidden: true
+  PostedAt;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

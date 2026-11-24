@@ -1,0 +1,119 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: {
+    typeName: 'Posición de recepción',
+    typeNamePlural: 'Posiciones de recepción',
+    title: {
+        type: #STANDARD,
+        value: 'ItemNumber'
+    },
+    description: {
+        type: #STANDARD,
+        value: 'ProductUUID'
+    }
+}
+
+annotate entity zc_receipt_items with
+{
+
+  @UI.facet: [
+      {
+          id: 'GeneralInformation',
+          purpose: #STANDARD,
+          type: #IDENTIFICATION_REFERENCE,
+          label: 'Datos de la Posición',
+          position: 10
+      }
+  ]
+
+  @UI.lineItem: [{ position: 10, label: 'Posición' }]
+  @UI.identification: [{ position: 10 }]
+  ItemNumber;
+
+  @Consumption.valueHelpDefinition: [
+  {
+  entity: {
+    name: 'zc_producto_lw',
+    element: 'ProductUUID'
+  }
+  }
+  ]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.lineItem: [{ position: 20, label: 'Producto' }]
+  @UI.identification: [{ position: 20 }]
+  ProductUUID;
+
+  @Consumption.valueHelpDefinition: [
+    {
+      entity: {
+        name: 'ZC_STORAGE_BIN',
+        element: 'StorageBinUUID'
+      }
+    }
+  ]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.lineItem: [{ position: 30, label: 'Ubicación' }]
+  @UI.identification: [{ position: 30 }]
+  StorageBinUUID;
+
+  @Consumption.valueHelpDefinition: [
+  {
+    entity: {
+      name: 'ZC_STOCK_TYPE',
+      element: 'StockTypeUUID'
+    }
+  }
+  ]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.lineItem: [{ position: 40, label: 'Tipo de stock' }]
+  @UI.identification: [{ position: 40 }]
+  StockTypeUUID;
+
+  @UI.lineItem: [{ position: 50, label: 'Cantidad esperada' }]
+  @UI.identification: [{ position: 50 }]
+  ExpectedQuantity;
+
+  @UI.lineItem: [{ position: 60, label: 'Cantidad recibida' }]
+  @UI.identification: [{ position: 60 }]
+  ReceivedQuantity;
+
+  @Consumption.valueHelpDefinition: [
+  {
+    entity: {
+      name: 'zc_units_meas',
+      element: 'UnitCode'
+    }
+  }
+  ]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.lineItem: [{ position: 70, label: 'Unidad' }]
+  @UI.identification: [{ position: 70 }]
+  UnitCode;
+
+  @UI.identification: [{ position: 80 }]
+  Description;
+
+  @UI.hidden: true
+  ReceiptItemUUID;
+
+  @UI.hidden: true
+  ReceiptUUID;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

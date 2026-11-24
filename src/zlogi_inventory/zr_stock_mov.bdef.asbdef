@@ -1,0 +1,51 @@
+managed implementation in class zbp_r_stock_mov unique;
+strict ( 2 );
+
+define behavior for zr_stock_mov alias StockMovement
+persistent table zlogi_stock_mov
+lock master
+authorization master ( global )
+{
+
+  field ( readonly, numbering : managed ) StockMovementUUID;
+  field ( readonly )
+    MovementGroupUUID,
+    WarehouseUUID,
+    StorageBinUUID,
+    ProductUUID,
+    StockTypeUUID,
+    MovementDirection,
+    Quantity,
+    UnitCode,
+    ReferenceType,
+    ReferenceNumber,
+    ReversalOfUUID,
+    MovementAt,
+    CreatedBy,
+    CreatedAt;
+
+  association _Warehouse;
+  association _StorageBin;
+  association _Product;
+  association _StockType;
+  association _Unit;
+
+  mapping for zlogi_stock_mov
+  {
+    StockMovementUUID = stock_movement_uuid;
+    MovementGroupUUID = movement_group_uuid;
+    WarehouseUUID     = warehouse_uuid;
+    StorageBinUUID    = storage_bin_uuid;
+    ProductUUID       = product_uuid;
+    StockTypeUUID     = stock_type_uuid;
+    MovementDirection = movement_direction;
+    Quantity          = quantity;
+    UnitCode          = unit_code;
+    ReferenceType     = reference_type;
+    ReferenceNumber   = reference_number;
+    ReversalOfUUID    = reversal_of_uuid;
+    MovementAt        = movement_at;
+    CreatedBy         = created_by;
+    CreatedAt         = created_at;
+  }
+}

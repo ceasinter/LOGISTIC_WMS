@@ -1,8 +1,8 @@
 @Metadata.layer:#CORE
 
 @UI.headerInfo: {
-  typeName: 'Tipo de stock',
-  typeNamePlural: 'Tipos de stock',
+  typeName: 'Tipo de Stock',
+  typeNamePlural: 'Tipos de Stock',
   title: {
     type: #STANDARD,
     value: 'StockTypeCode'
@@ -19,7 +19,7 @@ annotate entity zc_stock_type with
         id: 'GeneralInformation',
         purpose: #STANDARD,
         type: #IDENTIFICATION_REFERENCE,
-        label: 'Información general',
+        label: 'Información General',
         position: 10
       }
     ]

@@ -1,0 +1,4 @@
+@EndUserText.label: 'LOGISTIQ - Stock Movement - SD'
+define service Zsd_stock_mov {
+  expose zc_stock_mov as StockMovement;
+}

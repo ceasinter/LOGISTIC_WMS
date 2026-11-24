@@ -1,0 +1,31 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for zc_receipt_lw alias Receipt
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Items { create; with draft; }
+  use association _Warehouse;
+}
+
+define behavior for zc_receipt_items alias ReceiptItem
+{
+  use update;
+  use delete;
+
+  use association _Receipt { with draft; }
+  use association _Product;
+  use association _StockType;
+  use association _StorageBin;
+  use association _Unit;
+}

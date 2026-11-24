@@ -1,0 +1,132 @@
+managed implementation in class zbp_r_receipt_lw unique;
+strict ( 2 );
+with draft;
+with cross associations;
+
+define behavior for zr_receipt_lw alias Receipt
+persistent table zlogi_receipt
+draft table zlogi_receipt_d
+lock master
+total etag LastChangedAt
+authorization master ( global, instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) ReceiptUUID;
+
+  field ( readonly )
+  ReceiptNumber,
+  StatusCode,
+  PostedAt,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt;
+
+  field ( mandatory )
+  WarehouseUUID,
+  ReceiptDate;
+
+//  VALIDACIONES, DETERMIANACIONES, ACCIONES
+  determination SetReceiptDefaults on modify { create; }
+
+  association _Warehouse;
+  association _Items
+  {
+    create ( authorization : global );
+    with draft;
+  }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zlogi_receipt
+    {
+      ReceiptUUID        = receipt_uuid;
+      ReceiptNumber      = receipt_number;
+      WarehouseUUID      = warehouse_uuid;
+      SupplierCode       = supplier_code;
+      SupplierName       = supplier_name;
+      ReferenceNumber    = reference_number;
+      ReceiptDate        = receipt_date;
+      StatusCode         = status_code;
+      Description        = description;
+      PostedAt           = posted_at;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}
+
+
+define behavior for zr_receipt_item alias ReceiptItem
+persistent table zlogi_rec_item
+draft table zlogi_rec_item_d
+lock dependent by _Receipt
+authorization dependent by _Receipt
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( readonly, numbering : managed )
+  ReceiptItemUUID;
+
+  field ( readonly )
+  ReceiptUUID,
+  ItemNumber,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt;
+
+  field ( mandatory )
+  ProductUUID,
+  StorageBinUUID,
+  StockTypeUUID,
+  UnitCode,
+  ReceivedQuantity;
+
+  association _Receipt
+  {
+    with draft;
+  }
+
+  association _Product;
+  association _StorageBin;
+  association _StockType;
+  association _Unit;
+
+  mapping for zlogi_rec_item
+    {
+      ReceiptItemUUID    = receipt_item_uuid;
+      ReceiptUUID        = receipt_uuid;
+      ItemNumber         = item_number;
+      ProductUUID        = product_uuid;
+      StorageBinUUID     = storage_bin_uuid;
+      StockTypeUUID      = stock_type_uuid;
+      ExpectedQuantity   = expected_quantity;
+      ReceivedQuantity   = received_quantity;
+      UnitCode           = unit_code;
+      Description        = description;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

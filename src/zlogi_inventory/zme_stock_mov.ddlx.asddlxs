@@ -1,0 +1,79 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+  typeName: 'Movimiento de inventario',
+  typeNamePlural: 'Movimientos de inventario',
+  title: {
+    type: #STANDARD,
+    value: 'MovementDirection'
+  },
+  description: {
+    value: 'ReferenceNumber'
+  }
+}
+
+annotate entity zc_stock_mov with
+{
+  @UI.facet: [
+    {
+      id: 'GeneralInformation',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Información del movimiento',
+      position: 10
+    }
+  ]
+
+  @UI.lineItem: [{ position: 10, label: 'Dirección' }]
+  @UI.identification: [{ position: 10, label: 'Dirección' }]
+  MovementDirection;
+
+  @UI.lineItem: [{ position: 20, label: 'Fecha y hora' }]
+  @UI.identification: [{ position: 20, label: 'Fecha y hora' }]
+  MovementAt;
+
+  @UI.lineItem: [{ position: 30, label: 'Producto' }]
+  @UI.identification: [{ position: 30, label: 'Producto' }]
+  ProductUUID;
+
+  @UI.lineItem: [{ position: 40, label: 'Ubicación' }]
+  @UI.identification: [{ position: 40, label: 'Ubicación' }]
+  StorageBinUUID;
+
+  @UI.lineItem: [{ position: 50, label: 'Tipo de stock' }]
+  @UI.identification: [{ position: 50, label: 'Tipo de stock' }]
+  StockTypeUUID;
+
+  @UI.lineItem: [{ position: 60, label: 'Cantidad' }]
+  @UI.identification: [{ position: 60, label: 'Cantidad' }]
+  Quantity;
+
+  @UI.lineItem: [{ position: 70, label: 'Unidad' }]
+  @UI.identification: [{ position: 70, label: 'Unidad' }]
+  UnitCode;
+
+  @UI.lineItem: [{ position: 80, label: 'Referencia' }]
+  @UI.identification: [{ position: 80, label: 'Referencia' }]
+  ReferenceNumber;
+
+  @UI.identification: [{ position: 90, label: 'Tipo de referencia' }]
+  ReferenceType;
+
+  @UI.identification: [{ position: 100, label: 'Grupo de movimiento' }]
+  MovementGroupUUID;
+
+  @UI.identification: [{ position: 110, label: 'Movimiento revertido' }]
+  ReversalOfUUID;
+
+  @UI.hidden: true
+  StockMovementUUID;
+
+  @UI.hidden: true
+  WarehouseUUID;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+}

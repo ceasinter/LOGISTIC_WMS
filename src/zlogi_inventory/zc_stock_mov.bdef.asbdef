@@ -1,0 +1,7 @@
+projection;
+strict ( 2 );
+
+define behavior for zc_stock_mov alias StockMovement
+{
+
+}
