@@ -6,8 +6,10 @@ define root view entity zc_warehouse
   provider contract transactional_query
   as projection on zr_warehouse
 {
+      @ObjectModel.text.element: ['WarehouseName']
   key WarehouseUUID,
       WarehouseCode,
+      @Semantics.text: true
       WarehouseName,
       Description,
       City,
